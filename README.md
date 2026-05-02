@@ -1,1 +1,11 @@
-# CRUD-TAREA-8D
+# CRUD-TAR
+Conexión a la base de datos
+Cuando el programa inicia, lo primero que hace es intentar conectarse a la base de datos antes de mostrar cualquier menú. Esto se realiza mediante ODBC, que funciona como un puente de comunicación entre el programa en C++ y PostgreSQL.
+La conexión utiliza tres datos principales: el nombre del DSN que se configuró en Windows llamado universidad_dsn, el usuario de PostgreSQL que es postgres, y la contraseña del usuario. Si la conexión es exitosa, el programa muestra un mensaje de confirmación y continúa hacia el menú principal. Si la conexión falla, el programa muestra un mensaje de error y termina sin mostrar nada más.
+Cuando el usuario decide salir del programa, la conexión se cierra de forma ordenada para liberar los recursos de PostgreSQL correctamente.
+Funcionamiento del menú principal
+El menú principal se muestra apenas la conexión es exitosa. Presenta seis opciones: Alumnos, Cursos, Secciones, Alumnos-Cursos, Alumnos-Sección y Salir. Este menú funciona con un bucle que se repite constantemente, lo que significa que después de que el usuario termina de usar cualquier módulo, el menú vuelve a aparecer automáticamente. El único momento en que el menú deja de mostrarse es cuando el usuario elige la opción Salir.
+Funcionamiento de los submenús
+Cada opción del menú principal lleva a su propio submenú con cuatro operaciones disponibles: Listar, Grabar, Modificar, Eliminar y Regresar. Cada una de estas operaciones ejecuta una consulta SQL diferente sobre la base de datos. Listar ejecuta un SELECT para mostrar los registros existentes. Grabar ejecuta un INSERT para agregar un registro nuevo. Modificar ejecuta un UPDATE para cambiar los datos de un registro existente. Eliminar ejecuta un DELETE para borrar un registro. La opción Regresar sale del submenú y vuelve al menú principal.
+Flujo general del programa
+El programa inicia intentando conectarse a la base de datos. Si la conexión es exitosa muestra el menú principal, el usuario elige un módulo, trabaja con las opciones disponibles en el submenú y cuando termina regresa al menú principal. Este ciclo se repite hasta que el usuario elige Salir, momento en el que el programa cierra la conexión a la base de datos y termina.
